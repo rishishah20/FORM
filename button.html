@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FORM</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: antiquewhite;
+    }
+    .hover-box {
+      width: 200px;
+      height: 100px;
+      background-color: white;
+      border: 1px solid black;
+      text-align: center;
+      line-height: 100px;
+      margin: 20px 0;
+    }
+    #textOutput {
+      text-align: center;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+    <p>Press any key:</p>
+    <p id="keyOutput"></p> 
+  <p id="textOutput">Start typing...</p>
+  <input type="text" id="textInput" placeholder="ENTER YOUR NAME...">
+  <br>
+  <button id="clickButton">Click Me!</button>
+  <div id="hoverBox" class="hover-box">Hover over me</div>
+
+  <form id="exampleForm">
+    <input type="text" id="formInput" placeholder="type somthing...">
+    <br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('clickButton').addEventListener('click', function() {
+      alert('Button clicked!');
+    });
+    const textInput = document.getElementById('textInput');
+    const textOutput = document.getElementById('textOutput');
+    textInput.addEventListener('input', function() {
+      textOutput.textContent = textInput.value || 'Start typing...';
+    });
+    const hoverBox = document.getElementById('hoverBox');
+    hoverBox.addEventListener('mouseover', function() {
+      hoverBox.style.backgroundColor = 'yellow';
+    });
+    hoverBox.addEventListener('mouseout', function() {
+      hoverBox.style.backgroundColor = 'white';
+    });
+    document.addEventListener('keydown', function(event) {
+      const keyOutput = document.getElementById('keyOutput');
+      keyOutput.textContent = `You pressed: ${event.key}`;
+    });
+    const exampleForm = document.getElementById('exampleForm');
+    exampleForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      const formInputValue = document.getElementById('formInput').value;
+      alert(`Form input value: ${formInputValue}`);
+    });
+  </script>
+</body>
+</html>
